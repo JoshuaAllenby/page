@@ -3,10 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="referrer" content="no-referrer">
+    <title>Legal</title>
 
     <style>
+        :root {
+            --text-color: #fff;
+            --bg-color: #000;
+            --border-color: rgba(255, 255, 255, 0.8);
+        }
+
         html, body {
             height: 100%;
             margin: 0;
@@ -15,42 +23,74 @@
         }
 
         body {
-            background: #000;
-            color: #fff;
+            background: var(--bg-color);
+            color: var(--text-color);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100%;
             text-align: center;
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
+            font-size: clamp(2rem, 10vw, 4rem);
+            margin: 0 0 1.5rem;
+            line-height: 1.2;
+            max-width: 90%;
         }
 
         a {
-            color: white;
+            color: var(--text-color);
             text-decoration: none;
-            font-size: 1.5rem;
-            padding: 10px 20px;
-            border: 2px solid white;
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            padding: 12px 24px;
+            border: 2px solid var(--border-color);
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: 
+                background-color 0.3s ease,
+                transform 0.2s ease;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+        a:hover,
+        a:focus {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            outline: 2px solid var(--border-color);
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                margin-bottom: 2rem;
+            }
+            
+            a {
+                padding: 14px 28px;
+            }
+        }
+
+        @media (hover: none) {
+            a:hover {
+                background-color: transparent;
+                transform: none;
+            }
         }
     </style>
 </head>
 
 <body>
     <h1>You will be held responsible.</h1>
-    <a href="mailto:legal@joshuaallenby.co.uk">legal@joshuaallenby.co.uk</a>
+    <a href="mailto:legal@joshuaallenby.co.uk"
+       aria-label="Contact legal department via email"
+       role="button">
+        legal@joshuaallenby.co.uk
+    </a>
 </body>
 
 </html>
